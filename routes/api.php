@@ -15,10 +15,11 @@ use App\Http\Controllers\Api\AuthController;
 |
 */
 
-// //Public APIs
+//Public APIs
 Route::post('/login', [AuthController::class, 'login'])->name('user.login');
 Route::post('/user', [UserController::class, 'store'])->name('user.store');
 
+//Private APIs
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
 
