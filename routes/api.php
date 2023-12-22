@@ -35,7 +35,6 @@ Route::post('/booking', [BookingController::class, 'store'])->name('booking.stor
 Route::post('/room', [RoomController::class, 'store'])->name('room.store');
 
 
-
 //Private APIs
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/logout', [AuthController::class, 'logout']);
@@ -51,14 +50,14 @@ Route::middleware(['auth:sanctum'])->group(function () {
     });
 
     Route::controller(AdminController::class)->group(function () {
-        Route::get('/admin',               'index'); 
+        Route::get('/admin',               'index');
         Route::controller(BookingController::class)->group(function () {
-            Route::get('/booking',               'index');           
-        });
+            // Route::get('/booking',               'index');
+            
 
+        });
     });
 
-    
     // // User Specific APIs
     // Route::get('/profile/show',         [ProfileController::class, 'show']);
     // Route::put('/profile/image',        [ProfileController::class, 'image'])->name('profile.image');

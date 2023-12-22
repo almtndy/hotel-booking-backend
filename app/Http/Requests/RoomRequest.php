@@ -24,7 +24,7 @@ class RoomRequest extends FormRequest
         if (request()->routeIs('room.store')) {
             return [
                 'room_name' => 'required|string|max:255',
-                'image_path' => 'required|max:255',
+                'image_path' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
                 'details' => 'required|string|max:255',
                 'price' => 'required|numeric',
             ];
