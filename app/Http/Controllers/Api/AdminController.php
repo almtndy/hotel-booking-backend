@@ -40,34 +40,16 @@ class AdminController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    // public function show(string $id)
-    // {
-    //     return Admin::findOrFail($id);
-    // }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
         //
+    }
+
+    public function logout(Request $request)
+    {
+        $request->user()->tokens()->delete(); // Revokes all tokens for the authenticated user
+        return response()->json(['message' => 'Admin logged out successfully']);
     }
 }

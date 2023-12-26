@@ -17,6 +17,13 @@ class Room extends Model
     protected $table = 'rooms';
 
     /**
+     * The primary key associated with the table.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'room_id';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>

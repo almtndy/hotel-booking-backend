@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\BookingController;
 use App\Http\Controllers\Api\RoomController;
 use App\Models\Admin;
+use App\Models\Room;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,8 @@ Route::post('/booking', [BookingController::class, 'store'])->name('booking.stor
 
 //room
 Route::post('/room', [RoomController::class, 'store'])->name('room.store');
+Route::get('/rooms', [RoomController::class, 'index']);
+
 
 
 //Private APIs
@@ -41,24 +44,15 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::controller(UserController::class)->group(function () {
         Route::get('/user',               'index');
-        Route::get('/user/{id}',          'show');
-        Route::put('/user/{id}',          'update')->name('user.update');
-        Route::put('/user/email/{id}',    'email')->name('user.email');
-        Route::put('/user/password/{id}', 'password')->name('user.password');
-        // Route::put('/user/image/{id}', 'image')->name('user.image');
-        // Route::delete('/user/{id}',        'destroy');
     });
 
     Route::controller(AdminController::class)->group(function () {
+        Route::get('/logout', [AuthController::class, 'logout']);
         Route::get('/admin',               'index');
         Route::controller(BookingController::class)->group(function () {
             // Route::get('/booking',               'index');
-            
+
 
         });
     });
-
-    // // User Specific APIs
-    // Route::get('/profile/show',         [ProfileController::class, 'show']);
-    // Route::put('/profile/image',        [ProfileController::class, 'image'])->name('profile.image');
 });

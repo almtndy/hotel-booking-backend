@@ -25,7 +25,7 @@ class BookingRequest extends FormRequest
             return [
                 'firstname' => 'required|string|max:255',
                 'lastname' => 'required|string|max:255',
-                'phone_number' => 'required|string|max:20',
+                'phone_number' => 'required|string|max:11',
                 'checkin' => 'required|date',
                 'checkout' => 'required|date|after:checkin',
                 'user_id' => 'required|integer',

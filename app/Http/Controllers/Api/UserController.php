@@ -82,16 +82,16 @@ class UserController extends Controller
         return $user;
     }
 
-    public function image(UserRequest $request, string $id)
-    {
-        $user = User::findorFail($id);
-        if (!is_null($user->image)) {
-            Storage::disk('public')->delete($user->image);
-        }
+    // public function image(UserRequest $request, string $id)
+    // {
+    //     $user = User::findorFail($id);
+    //     if (!is_null($user->image)) {
+    //         Storage::disk('public')->delete($user->image);
+    //     }
 
-        $user->image = $request->file('image')->storePublicly('images', 'public');
+    //     $user->image = $request->file('image')->storePublicly('images', 'public');
 
-        $user->save();
-        return $user;
-    }
+    //     $user->save();
+    //     return $user;
+    // }
 }

@@ -31,11 +31,6 @@ class AdminRequest extends FormRequest
                 'name' => 'required|string|max:255',
                 'password'  => 'required|min:8|confirmed',
             ];
-        } elseif (request()->routeIs('admin.store')) {
-            return [
-                'name' => 'required|string|max:255',
-                'password'  => 'required|min:8|confirmed',
-            ];
         }
     }
 }
